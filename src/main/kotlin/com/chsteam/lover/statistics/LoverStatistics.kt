@@ -9,7 +9,7 @@ import net.minecraft.util.Identifier
 
 object LoverStatistics {
 
-    val ORGASMS: Identifier = Registry.register(Registries.CUSTOM_STAT, "orgasms",Identifier("lover", "orgasms"))
+    val ORGASMS: Identifier = register("orgasms")
 
     init {
         Stats.CUSTOM.getOrCreateStat(ORGASMS, StatFormatter.DEFAULT);
@@ -17,5 +17,9 @@ object LoverStatistics {
 
     fun register() {
 
+    }
+
+    private fun register(id: String) : Identifier {
+        return Registry.register(Registries.CUSTOM_STAT, id, Identifier("lover", id))
     }
 }

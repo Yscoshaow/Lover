@@ -1,6 +1,7 @@
 package com.chsteam.lover
 
 import com.chsteam.lover.attribute.LoverAttributes
+import com.chsteam.lover.effect.LoverEffects
 import com.chsteam.lover.entity.LoverEntities
 import com.chsteam.lover.item.LoverItems
 import com.chsteam.lover.statistics.LoverStatistics
@@ -15,6 +16,7 @@ object Lover : ModInitializer {
 		LoverItems.register()
 		LoverEntities.register()
 		LoverAttributes.register()
+		LoverEffects.register()
 		LoverStatistics.register()
 	}
 }
