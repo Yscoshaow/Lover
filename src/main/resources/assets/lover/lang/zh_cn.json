@@ -1,4 +1,8 @@
 {
+  "attribute.name.generic.shame": "羞耻度",
+  "attribute.name.generic.pleasurable_sensation": "快感值",
+  "attribute.name.generic.libdio": "性欲",
+
   "itemGroup.lover.main_group": "爱恋",
 
   "item.lover.gag": "口塞",

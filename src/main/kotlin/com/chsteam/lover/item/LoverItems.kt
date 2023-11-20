@@ -15,7 +15,7 @@ import net.minecraft.util.Identifier
 
 object LoverItems {
 
-    val EGG_VIBRATOR = register(EggVibrator(), "egg_vibrator.json")
+    val EGG_VIBRATOR = register(EggVibrator(), "egg_vibrator")
     val GAG = register(Gag(), "gag")
 
     val ITEM_GROUP = FabricItemGroup.builder()
