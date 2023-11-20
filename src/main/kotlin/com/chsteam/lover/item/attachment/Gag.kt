@@ -12,6 +12,7 @@ import net.minecraft.item.ItemStack
 import java.util.*
 
 class Gag : TrinketItem(FabricItemSettings().maxCount(1))  {
+
     override fun getModifiers(
         stack: ItemStack?,
         slot: SlotReference?,

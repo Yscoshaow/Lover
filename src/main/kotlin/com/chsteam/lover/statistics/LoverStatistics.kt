@@ -10,9 +10,11 @@ import net.minecraft.util.Identifier
 object LoverStatistics {
 
     val ORGASMS: Identifier = register("orgasms")
+    val EDGE: Identifier = register("edge")
 
     init {
-        Stats.CUSTOM.getOrCreateStat(ORGASMS, StatFormatter.DEFAULT);
+        Stats.CUSTOM.getOrCreateStat(ORGASMS, StatFormatter.DEFAULT)
+        Stats.CUSTOM.getOrCreateStat(EDGE, StatFormatter.DEFAULT)
     }
 
     fun register() {
