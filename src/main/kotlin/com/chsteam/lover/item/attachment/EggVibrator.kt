@@ -10,7 +10,7 @@ import net.minecraft.entity.attribute.EntityAttributeModifier
 import net.minecraft.item.ItemStack
 import java.util.*
 
-class JumpingEgg(setting : Settings) : TrinketItem(setting) {
+class EggVibrator(setting : Settings) : TrinketItem(setting) {
 
     override fun getModifiers(
         stack: ItemStack?,
