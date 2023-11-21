@@ -12,6 +12,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public abstract class PlayerEntityMixin {
     @Inject(at = @At("RETURN") , method = "createPlayerAttributes", cancellable = true)
     private static void attribute(CallbackInfoReturnable<DefaultAttributeContainer.Builder> cir) {
-        cir.setReturnValue(cir.getReturnValue().add(LoverAttributes.INSTANCE.getPLEASURABLE_SENSATION(),1).add(LoverAttributes.INSTANCE.getSHAME(),1).add(LoverAttributes.INSTANCE.getLIBDIO(),1));
+        cir.setReturnValue(cir.getReturnValue().add(LoverAttributes.INSTANCE.getPLEASURABLE_SENSATION(),0).add(LoverAttributes.INSTANCE.getSHAME(),0).add(LoverAttributes.INSTANCE.getLIBDIO(),1).add(LoverAttributes.INSTANCE.getSENSITIVITY(), 1));
     }
 }

@@ -11,6 +11,7 @@ object LoverAttributes {
     val LIBDIO = register("generic.libdio", ClampedEntityAttribute("attribute.name.generic.libdio", 0.0, 0.0, 100.0).setTracked(true))
     val PLEASURABLE_SENSATION = register("generic.pleasurable_sensation", ClampedEntityAttribute("attribute.name.generic.pleasurable_sensation", 0.0, 0.0, 100.0).setTracked(true))
     val SHAME = register("generic.shame", ClampedEntityAttribute("attribute.name.generic.shame", 0.0, 0.0, 100.0).setTracked(true))
+    val SENSITIVITY = register("generic.sensitivity", ClampedEntityAttribute("attribute.name.generic.sensitivity", 1.0, 1.0, 100.0).setTracked(true))
 
     fun register() {
         // 仅仅是为了注册这些属性

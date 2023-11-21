@@ -8,10 +8,15 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings
 import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.attribute.EntityAttribute
 import net.minecraft.entity.attribute.EntityAttributeModifier
+import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemStack
 import java.util.*
 
 class Gag : TrinketItem(FabricItemSettings().maxCount(1))  {
+
+    companion object {
+        val gagPlayer = hashMapOf<UUID, Boolean>()
+    }
 
     override fun getModifiers(
         stack: ItemStack?,
@@ -22,5 +27,17 @@ class Gag : TrinketItem(FabricItemSettings().maxCount(1))  {
         val modifiers =  super.getModifiers(stack, slot, entity, uuid)
         modifiers.put(LoverAttributes.SHAME, EntityAttributeModifier(uuid, "lover.pleasurable_shame_speed", 1.0, EntityAttributeModifier.Operation.ADDITION))
         return modifiers
+    }
+
+    override fun onEquip(stack: ItemStack?, slot: SlotReference?, entity: LivingEntity?) {
+        if (entity is PlayerEntity) {
+            gagPlayer[entity.uuid] = true
+        }
+    }
+
+    override fun onUnequip(stack: ItemStack?, slot: SlotReference?, entity: LivingEntity?) {
+        if (entity is PlayerEntity) {
+            gagPlayer[entity.uuid] = false
+        }
     }
 }
