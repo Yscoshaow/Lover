@@ -1,6 +1,7 @@
 package com.chsteam.lover.item.attachment
 
 import com.chsteam.lover.attribute.LoverAttributes
+import com.chsteam.lover.item.lock.LockableAttachment
 import com.google.common.collect.Multimap
 import dev.emi.trinkets.api.SlotReference
 import dev.emi.trinkets.api.TrinketItem
@@ -12,7 +13,7 @@ import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemStack
 import java.util.*
 
-class Gag : TrinketItem(FabricItemSettings().maxCount(1))  {
+class Gag : LockableAttachment(FabricItemSettings().maxCount(1))  {
 
     companion object {
         val gagPlayer = hashMapOf<UUID, Boolean>()
