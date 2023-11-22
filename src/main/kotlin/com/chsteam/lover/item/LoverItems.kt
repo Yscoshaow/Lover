@@ -1,8 +1,8 @@
 package com.chsteam.lover.item
 
+import com.chsteam.lover.item.attachment.Blinkers
 import com.chsteam.lover.item.attachment.EggVibrator
 import com.chsteam.lover.item.attachment.Gag
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup
 import net.minecraft.item.Item
 import net.minecraft.item.ItemGroup
@@ -12,11 +12,11 @@ import net.minecraft.registry.Registry
 import net.minecraft.text.Text
 import net.minecraft.util.Identifier
 
-
 object LoverItems {
 
     val EGG_VIBRATOR = register(EggVibrator(), "egg_vibrator")
     val GAG = register(Gag(), "gag")
+    val BLINKERS = register(Blinkers(), "blinkers")
 
     val ITEM_GROUP = FabricItemGroup.builder()
         .icon { ItemStack(EGG_VIBRATOR) }
@@ -24,6 +24,7 @@ object LoverItems {
         .entries { displayContext: ItemGroup.DisplayContext, entries: ItemGroup.Entries ->
             entries.add(EGG_VIBRATOR)
             entries.add(GAG)
+            entries.add(BLINKERS)
         }
         .build()
 
