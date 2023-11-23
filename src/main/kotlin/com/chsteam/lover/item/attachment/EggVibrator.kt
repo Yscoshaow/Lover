@@ -20,7 +20,7 @@ class EggVibrator : TrinketItem(FabricItemSettings().maxCount(1)) {
         uuid: UUID?
     ): Multimap<EntityAttribute, EntityAttributeModifier> {
         val modifiers =  super.getModifiers(stack, slot, entity, uuid)
-        modifiers.put(LoverAttributes.PLEASURABLE_SENSATION, EntityAttributeModifier(uuid, "lover.pleasurable_sensation_speed", 1.0, EntityAttributeModifier.Operation.ADDITION))
+        modifiers.put(LoverAttributes.INTERACT, EntityAttributeModifier(uuid, "lover.pleasurable_sensation_speed", 1.0, EntityAttributeModifier.Operation.ADDITION))
         return modifiers
     }
 }

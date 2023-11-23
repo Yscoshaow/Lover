@@ -1,15 +1,12 @@
 package com.chsteam.lover.item.lock
 
 import com.chsteam.lover.item.LoverItems
-import dev.emi.trinkets.api.SlotReference
 import dev.emi.trinkets.api.TrinketInventory
 import dev.emi.trinkets.api.TrinketItem
 import net.minecraft.client.item.TooltipContext
-import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.inventory.StackReference
 import net.minecraft.item.ItemStack
-import net.minecraft.item.Items
 import net.minecraft.screen.slot.Slot
 import net.minecraft.text.Text
 import net.minecraft.util.ClickType
@@ -55,6 +52,11 @@ abstract class LockableAttachment(settings: Settings) : TrinketItem(settings) {
                     nbt.putUuid("lock_id", UUID.fromString("00000000-0000-0000-0000-000000000000"))
                     stack.nbt = nbt
                 }
+            }
+            else if(otherStack?.item is KeyMaster) {
+                val nbt = stack?.orCreateNbt
+                nbt?.putUuid("lock_id", UUID.fromString("00000000-0000-0000-0000-000000000000"))
+                stack?.nbt = nbt
             }
         }
 

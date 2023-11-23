@@ -2,7 +2,9 @@ package com.chsteam.lover.item
 
 import com.chsteam.lover.item.attachment.*
 import com.chsteam.lover.item.lock.Key
+import com.chsteam.lover.item.lock.KeyMaster
 import com.chsteam.lover.item.lock.Locker
+import com.chsteam.lover.item.material.BottleLove
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup
 import net.minecraft.item.Item
 import net.minecraft.item.ItemGroup
@@ -21,6 +23,8 @@ object LoverItems {
     val ANAL_PLUG = register(AnalPlug(), "anal_plug")
     val LOCKER = register(Locker(), "locker")
     val KEY = register(Key(), "key")
+    val KEY_MASTER = register(KeyMaster(), "key_master")
+    val BOTTLE_OF_LOVE = register(BottleLove(), "bottle_of_love")
 
     val ITEM_GROUP = FabricItemGroup.builder()
         .icon { ItemStack(EGG_VIBRATOR) }
@@ -33,6 +37,8 @@ object LoverItems {
             entries.add(ANAL_PLUG)
             entries.add(LOCKER)
             entries.add(KEY)
+            entries.add(KEY_MASTER)
+            entries.add(BOTTLE_OF_LOVE)
         }
         .build()
 

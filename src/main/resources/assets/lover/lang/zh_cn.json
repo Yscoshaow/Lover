@@ -1,7 +1,8 @@
 {
   "attribute.name.generic.shame": "羞耻度",
-  "attribute.name.generic.pleasurable_sensation": "快感值",
+  "attribute.name.generic.interact": "刺激度",
   "attribute.name.generic.libdio": "性欲",
+  "attribute.name.generic.sensitivity": "敏感度",
 
   "itemGroup.lover.main_group": "爱恋",
 
@@ -12,10 +13,13 @@
   "item.lover.anal_plug": "肛塞",
   "item.lover.key": "钥匙",
   "item.lover.locker": "锁",
+  "item.lover.key_master": "万能钥匙",
+  "item.lover.bottle_of_love": "瓶装爱液",
 
   "item.lover.key.tooltip": "钥匙序列",
 
   "effect.lover.oestrus": "发情",
+  "effect.lover.hormone": "荷尔蒙散发",
 
   "stat.lover.orgasms": "高潮次数",
   "stat.lover.edge": "寸止次数"

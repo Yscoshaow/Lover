@@ -8,10 +8,10 @@ import net.minecraft.util.Identifier
 
 object LoverAttributes {
 
-    val LIBDIO = register("generic.libdio", ClampedEntityAttribute("attribute.name.generic.libdio", 0.0, 0.0, 100.0).setTracked(true))
-    val PLEASURABLE_SENSATION = register("generic.pleasurable_sensation", ClampedEntityAttribute("attribute.name.generic.pleasurable_sensation", 0.0, 0.0, 100.0).setTracked(true))
-    val SHAME = register("generic.shame", ClampedEntityAttribute("attribute.name.generic.shame", 0.0, 0.0, 100.0).setTracked(true))
-    val SENSITIVITY = register("generic.sensitivity", ClampedEntityAttribute("attribute.name.generic.sensitivity", 1.0, 1.0, 100.0).setTracked(true))
+    val LIBDIO = register("generic.libdio", ClampedEntityAttribute("attribute.name.generic.libdio", 0.0, 0.0, 100.0).setTracked(true)) // 欲望增长速率
+    val INTERACT = register("generic.interact", ClampedEntityAttribute("attribute.name.generic.interact", 0.0, 0.0, 1000.0).setTracked(true)) // 刺激度
+    val SHAME = register("generic.shame", ClampedEntityAttribute("attribute.name.generic.shame", 0.0, 0.0, 10.0).setTracked(true)) // 羞耻度
+    val SENSITIVITY = register("generic.sensitivity", ClampedEntityAttribute("attribute.name.generic.sensitivity", 5.0, 1.0, 1000.0).setTracked(true)) // 敏感度
 
     fun register() {
         // 仅仅是为了注册这些属性

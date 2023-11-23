@@ -8,6 +8,7 @@ import net.minecraft.util.Identifier
 object LoverEffects {
 
     val OESTRUS = register(OestrusEffect(), "oestrus")
+    val HORMONE = register(HormoneEffect(), "hormone")
 
     fun register() {
 
