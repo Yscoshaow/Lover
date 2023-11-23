@@ -32,7 +32,7 @@ public abstract class PlayerEntityMixin extends LivingEntity implements LoverMan
     }
 
     @Inject(at = @At("RETURN") , method = "tick")
-    private void lover$updateLover() {
+    public void lover$updateLover(CallbackInfo info) {
         PlayerEntity player = (PlayerEntity) (Object) this;
 
         this.loverManager.update(player);

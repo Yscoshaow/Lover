@@ -11,6 +11,7 @@ import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.util.ActionResult
 import java.util.UUID
+import kotlin.math.max
 
 class LoverManager {
 
@@ -46,13 +47,16 @@ class LoverManager {
         }
 
         val pleasurableIncrease = player.attributes.getValue(LoverAttributes.SENSITIVITY) * player.attributes.getValue(LoverAttributes.INTERACT)
+
         if(pleasurableIncrease != 0.0) {
-            pleasurable += pleasurableIncrease.toInt()
-        } else {
-            pleasurable -= 5
+            if(this.pleasurable < MAX_PLEASURABLE) {
+                this.pleasurable += pleasurableIncrease.toInt()
+            }
+        } else if(this.pleasurable > 0) {
+            this.pleasurable = max(0, this.pleasurable - 5)
         }
 
-        if(pleasurable == MAX_PLEASURABLE) {
+        if(this.pleasurable >= MAX_PLEASURABLE) {
             val event = OrgasmsEvent.EVENT.invoker().call(player)
             if(event != ActionResult.FAIL) {
                 pleasurable = 700
