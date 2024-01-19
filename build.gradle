@@ -1,7 +1,7 @@
 plugins {
-	id 'fabric-loom' version '1.4-SNAPSHOT'
+	id 'fabric-loom' version '1.5-SNAPSHOT'
 	id 'maven-publish'
-  id "org.jetbrains.kotlin.jvm" version "1.9.20"
+  id "org.jetbrains.kotlin.jvm" version "1.9.22"
 }
 
 version = project.mod_version
@@ -24,9 +24,16 @@ repositories {
 		name = 'GeckoLib'
 		url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
 	}
+	maven {
+		name "KosmX's maven"
+		url 'https://maven.kosmx.dev/'
+	}
 }
 
 loom {
+
+	accessWidenerPath = file("src/main/resources/lover.accesswidener")
+
     runs {
 		// This adds a new gradle task that runs the datagen API: "gradlew runDatagen"
 		datagen {
@@ -64,7 +71,6 @@ dependencies {
 	// These are included in the Fabric API production distribution and allow you to update your mod to the latest modules at a later more convenient time.
 
 	modImplementation "dev.emi:trinkets:3.8.0"
-	modImplementation 'software.bernie.geckolib:geckolib-fabric-1.20.2:4.2.4'
 }
 
 processResources {

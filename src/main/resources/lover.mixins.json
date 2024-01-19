@@ -6,6 +6,9 @@
 		"PlayerEntityMixin",
 		"ServerPlayerEntityMixin"
 	],
+	"client": [
+		"InGameHudMixin"
+	],
 	"injectors": {
 		"defaultRequire": 1
 	}

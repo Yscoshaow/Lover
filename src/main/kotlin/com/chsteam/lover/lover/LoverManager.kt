@@ -21,9 +21,10 @@ class LoverManager {
         val LOVER_TIMING = listOf(250, 500, 750, 1000)
     }
 
-    private var libdio = 0
+    var libdio = 0 // 欲望值
+        private set
     private var tick = 0
-    private var pleasurable = 0
+    private var pleasurable = 0 // 快感值
 
     fun update(player: PlayerEntity) {
         tick++

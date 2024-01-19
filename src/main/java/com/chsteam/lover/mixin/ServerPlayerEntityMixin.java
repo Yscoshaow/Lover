@@ -18,16 +18,4 @@ public abstract class ServerPlayerEntityMixin {
     @Accessor("session")
     abstract PublicPlayerSession getSession();
 
-    @ModifyVariable(at = @At("HEAD") , method = "sendChatMessage", ordinal = 0)
-    public SentMessage gagChat(SentMessage message) {
-        UUID uuid = getSession().sessionId();
-
-        if (Gag.Companion.getGagPlayer().getOrDefault(uuid, false)) {
-            SentMessage.Chat chat = (SentMessage.Chat) message;
-            return new SentMessage.Chat(SignedMessage.ofUnsigned("这是一个测试"));
-        }
-
-        return message;
-    }
-
 }
