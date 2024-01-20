@@ -4,34 +4,37 @@ import com.chsteam.lover.attribute.LoverAttributes
 import com.chsteam.lover.effect.LoverEffects
 import com.chsteam.lover.item.LoverItems
 import com.chsteam.lover.schedule.DelayedTaskManager
+import com.chsteam.lover.settings.Settings
 import com.chsteam.lover.statistics.LoverStatistics
+import com.chsteam.lover.worlddata.StationeryText
 import com.mojang.brigadier.CommandDispatcher
-import com.mojang.brigadier.arguments.IntegerArgumentType
-import com.mojang.brigadier.builder.ArgumentBuilder
-import com.mojang.brigadier.builder.LiteralArgumentBuilder
 import net.fabricmc.api.ModInitializer
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents
+import net.fabricmc.fabric.api.gamerule.v1.GameRuleFactory
+import net.fabricmc.fabric.api.gamerule.v1.GameRuleRegistry
+import net.fabricmc.fabric.api.gamerule.v1.rule.DoubleRule
 import net.minecraft.command.CommandRegistryAccess
 import net.minecraft.server.MinecraftServer
 import net.minecraft.server.command.CommandManager
 import net.minecraft.server.command.ServerCommandSource
+import net.minecraft.world.GameRules
+import net.minecraft.world.GameRules.BooleanRule
 import org.slf4j.LoggerFactory
-import com.mojang.brigadier.arguments.StringArgumentType.getString
-import com.mojang.brigadier.arguments.StringArgumentType.word
-import net.minecraft.server.command.CommandManager.literal
-import net.minecraft.server.command.CommandManager.argument
-import net.minecraft.server.command.CommandManager.*
 
 
-object Lover : ModInitializer {
+object Lover : ModInitializer  {
 
 	const val MOD_ID = "lover"
 
     private val logger = LoggerFactory.getLogger("lover")
 
-	private lateinit var server: MinecraftServer
+	lateinit var server: MinecraftServer
+		private set
+	lateinit var stationeryText: StationeryText
+		private set
+
 
 	override fun onInitialize() {
 		LoverItems.register()
@@ -45,6 +48,7 @@ object Lover : ModInitializer {
 
 		ServerLifecycleEvents.SERVER_STARTED.register { server: MinecraftServer ->
 			this.server = server
+			this.stationeryText = StationeryText.getServerState(server)
 		}
 		ServerTickEvents.END_SERVER_TICK.register { server ->
 			DelayedTaskManager.tick(server)

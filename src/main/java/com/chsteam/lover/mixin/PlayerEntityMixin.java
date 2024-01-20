@@ -1,13 +1,20 @@
 package com.chsteam.lover.mixin;
 
+import com.chsteam.lover.access.LeashAccess;
 import com.chsteam.lover.access.LoverManagerAccess;
 import com.chsteam.lover.attribute.LoverAttributes;
+import com.chsteam.lover.item.LoverItems;
 import com.chsteam.lover.lover.LoverManager;
+import dev.emi.trinkets.api.TrinketsApi;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.Mixin;
@@ -24,6 +31,9 @@ public abstract class PlayerEntityMixin extends LivingEntity implements LoverMan
     }
 
     private final LoverManager loverManager = new LoverManager();
+
+    private Entity holdingEntity;
+    private NbtCompound leashNbt;
 
     @NotNull
     @Override
@@ -51,6 +61,22 @@ public abstract class PlayerEntityMixin extends LivingEntity implements LoverMan
     @Inject(method = "writeCustomDataToNbt", at = @At(value = "TAIL"))
     private void lover$writeCustomDataToTag(NbtCompound nbt, CallbackInfo info) {
         this.loverManager.writeNbt(nbt);
+    }
+
+    @Inject(method = "interact(Lnet/minecraft/entity/Entity;Lnet/minecraft/util/Hand;)Lnet/minecraft/util/ActionResult;", at = @At("RETURN"), cancellable = true)
+    private void lover$onLeashInteract(Entity entity, Hand hand, CallbackInfoReturnable<ActionResult> info) {
+        if (info.getReturnValue() != ActionResult.PASS) return;
+        if ((Object) this instanceof ServerPlayerEntity && entity instanceof LeashAccess) {
+            ServerPlayerEntity player = (ServerPlayerEntity) (Object) this;
+            LeashAccess impl = (LeashAccess) entity;
+            if(entity instanceof LivingEntity
+                    && TrinketsApi.getTrinketComponent((LivingEntity) entity).isPresent()
+                    && TrinketsApi.getTrinketComponent((LivingEntity) entity).get().isEquipped(LoverItems.INSTANCE.getLEATHER_COLLAR())
+            ) {
+                info.setReturnValue(impl.leashInteract(player, hand));
+                info.cancel();
+            }
+        }
     }
 
 }

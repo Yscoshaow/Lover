@@ -1,6 +1,9 @@
 package com.chsteam.lover.item
 
 import com.chsteam.lover.item.attachment.*
+import com.chsteam.lover.item.functional.DriftingBottle
+import com.chsteam.lover.item.functional.LeatherLead
+import com.chsteam.lover.item.functional.Stationery
 import com.chsteam.lover.item.lock.Key
 import com.chsteam.lover.item.lock.KeyMaster
 import com.chsteam.lover.item.lock.Locker
@@ -25,8 +28,13 @@ object LoverItems {
     val KEY = register(Key(), "key")
     val KEY_MASTER = register(KeyMaster(), "key_master")
     val BOTTLE_OF_LOVE = register(BottleLove(), "bottle_of_love")
+    val DRIFTING_BOTTLE = register(DriftingBottle(), "drifting_bottle")
+    val STATIONERY = register(Stationery(), "stationery")
+    val EARPLUG = register(Earplug(), "earplug")
+    val LEATHER_COLLAR = register(LeatherCollar(), "leather_collar")
+    val LEATHER_LEAD = register(LeatherLead(), "leather_lead")
 
-    val ITEM_GROUP = FabricItemGroup.builder()
+    private val ITEM_GROUP = FabricItemGroup.builder()
         .icon { ItemStack(EGG_VIBRATOR) }
         .displayName(Text.translatable("itemGroup.lover.main_group"))
         .entries { _: ItemGroup.DisplayContext, entries: ItemGroup.Entries ->
@@ -39,11 +47,20 @@ object LoverItems {
             entries.add(KEY)
             entries.add(KEY_MASTER)
             entries.add(BOTTLE_OF_LOVE)
+            entries.add(STATIONERY)
+            entries.add(DRIFTING_BOTTLE)
+            entries.add(EARPLUG)
+            entries.add(LEATHER_COLLAR)
+            entries.add(LEATHER_LEAD)
         }
         .build()
 
-    fun register() {
+    init {
         Registry.register(Registries.ITEM_GROUP, Identifier("lover", "main_group"), ITEM_GROUP)
+    }
+
+    fun register() {
+
     }
 
     private fun register(item: Item, id: String) : Item {
